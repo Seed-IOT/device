@@ -2,7 +2,7 @@ package model
 
 import (
 	"database/sql"
-	"mqtt/config"
+	"device/config"
 	"regexp"
 
 	"github.com/jinzhu/gorm"
@@ -63,7 +63,7 @@ func initDB(url string) (*gorm.DB, error) {
 	re3, _ := regexp.Compile(`\@\/(.*?)\?`)
 	rep := re3.ReplaceAllString(url, "@/sys?")
 	basedb, err := sql.Open("mysql", rep)
-	stmt, err := basedb.Prepare("CREATE DATABASE  IF NOT EXISTS `mqtt`")
+	stmt, err := basedb.Prepare("CREATE DATABASE  IF NOT EXISTS `device`")
 	stmt.Exec()
 	basedb.Close()
 	db, err := gorm.Open("mysql", url)

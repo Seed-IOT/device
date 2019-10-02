@@ -1,8 +1,8 @@
 package web
 
 import (
-	"mqtt/config"
-	"mqtt/model"
+	"device/config"
+	"device/model"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

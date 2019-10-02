@@ -1,8 +1,8 @@
 package model
 
 import (
-	"mqtt/constant"
-	"mqtt/log"
+	"device/constant"
+	"device/log"
 	"strings"
 
 	"encoding/json"

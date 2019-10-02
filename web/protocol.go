@@ -1,9 +1,9 @@
 package web
 
 import (
-	"mqtt/constant"
-	"mqtt/log"
-	"mqtt/model"
+	"device/constant"
+	"device/log"
+	"device/model"
 
 	"github.com/gin-gonic/gin"
 )

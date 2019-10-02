@@ -3,15 +3,15 @@ version: '3.3'
 services:
   api:
     build: .
-    image: mqtt
+    image: device
     ports:
       - 8080:8080
     depends_on:
       - db
-    command: ["./wait-for-it.sh","db:3306", "--","./mqtt"]
+    command: ["./wait-for-it.sh","db:3306", "--","./device"]
     volumes: 
-      - /Users/Kylewang/go/src/mqtt:/api
-      - /Users/Kylewang/go/src/mqtt/config/config.yml:/config.yml
+      - /Users/Kylewang/go/src/device:/api
+      - /Users/Kylewang/go/src/device/config/config.yml:/config.yml
   db:
     image: 'mysql'
     command: --default-authentication-plugin=mysql_native_password

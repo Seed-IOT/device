@@ -1,4 +1,4 @@
--- Create a new database called 'mqtt'
+-- Create a new database called 'device'
 -- Connect to the 'master' database to run this snippet
 USE master
 GO
@@ -6,9 +6,9 @@ GO
 IF NOT EXISTS (
   SELECT name
     FROM sys.databases
-    WHERE name = N'mqtt'
+    WHERE name = N'device'
 )
-CREATE DATABASE mqtt
+CREATE DATABASE device
 GO
 
 -- Create a new table called 'app' in schema 'SchemaName'

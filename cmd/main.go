@@ -1,14 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"mqtt/config"
-	"mqtt/log"
-	"mqtt/model"
-	"mqtt/web"
-
-	"gobot.io/x/gobot"
-	"gobot.io/x/gobot/platforms/mqtt"
+	"device/config"
+	"device/log"
+	"device/model"
+	"device/web"
 
 	"os"
 	"os/signal"
@@ -40,28 +36,9 @@ func main() {
 		}
 	}()
 
-	// 启动mqtt客户端
-	go func() {
-		mqttAdaptor := mqtt.NewAdaptor("tcp://0.0.0.0:1883", "pinger")
-
-		work := func() {
-			mqttAdaptor.On("wifiDevice", func(msg mqtt.Message) {
-				fmt.Println(msg)
-			})
-		}
-
-		robot := gobot.NewRobot("mqttBot",
-			[]gobot.Connection{mqttAdaptor},
-			work,
-		)
-		robot.Start()
-		defer robot.Stop()
-
-	}()
-	// 程序结束 关闭db 关闭mqtt
 	defer service.DB.Close()
 
-	log.GlobalLog.Println("mqtt is running")
+	log.GlobalLog.Println("device is running")
 	<-quit
-	log.GlobalLog.Println("mqtt is stopped")
+	log.GlobalLog.Println("device is stopped")
 }
