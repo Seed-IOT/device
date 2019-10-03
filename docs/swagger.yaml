@@ -1,0 +1,51 @@
+definitions:
+  web.BindDevicesParams:
+    properties:
+      snos:
+        items:
+          type: string
+        type: array
+      uid:
+        type: string
+    required:
+    - snos
+    - uid
+    type: object
+  web.bindReturn:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          type: string
+        type: array
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /device/binding:
+    post:
+      consumes:
+      - application/json
+      description: 绑定设备
+      operationId: BindDevices
+      parameters:
+      - description: BindDevices
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/web.BindDevicesParams'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 可能返回的错误码 8000 7001
+          schema:
+            $ref: '#/definitions/web.bindReturn'
+      summary: BindDevices
+swagger: "2.0"

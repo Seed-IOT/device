@@ -1,0 +1,79 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {},
+        "license": {}
+    },
+    "paths": {
+        "/device/binding": {
+            "post": {
+                "description": "绑定设备",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "BindDevices",
+                "operationId": "BindDevices",
+                "parameters": [
+                    {
+                        "description": "BindDevices",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/web.BindDevicesParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "可能返回的错误码 8000 7001",
+                        "schema": {
+                            "$ref": "#/definitions/web.bindReturn"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "web.BindDevicesParams": {
+            "type": "object",
+            "required": [
+                "snos",
+                "uid"
+            ],
+            "properties": {
+                "snos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "uid": {
+                    "type": "string"
+                }
+            }
+        },
+        "web.bindReturn": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

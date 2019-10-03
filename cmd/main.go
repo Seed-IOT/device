@@ -8,6 +8,8 @@ import (
 
 	"os"
 	"os/signal"
+
+	_ "device/docs"
 )
 
 func main() {
